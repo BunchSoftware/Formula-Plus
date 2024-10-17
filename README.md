@@ -1,25 +1,25 @@
 # Formula-Plus
 Программное обеспечение для математических и физических вычислений
 
-![Static Badge](https://img.shields.io/badge/DSD-Games/Formula-Plus)
-![GitHub top language](https://img.shields.io/github/languages/top/DSD-Games/Formula-Plus)
-![GitHub](https://img.shields.io/github/license/DSD-Games/Formula-Plus)
-![GitHub Repo stars](https://img.shields.io/github/stars/DSD-Games/Formula-Plus)
-![GitHub issues](https://img.shields.io/github/issues/DSD-Games/Formula-Plus)
+![Static Badge](https://img.shields.io/badge/BunchSoftware/Formula-Plus)
+![GitHub top language](https://img.shields.io/github/languages/top/BunchSoftware/Formula-Plus)
+![GitHub](https://img.shields.io/github/license/BunchSoftware/Formula-Plus)
+![GitHub Repo stars](https://img.shields.io/github/stars/BunchSoftware/Formula-Plus)
+![GitHub issues](https://img.shields.io/github/issues/BunchSoftware/Formula-Plus)
 
-![Logotype](Documentation/images/logotype.png)
+![Logotype](doc/images/logotype.png)
 
 ## Установка проекта (Windows)
-У вас должны быть установлены [зависимости проекта](https://github.com/DSD-Games/Formula-Plus#зависимости)
+У вас должны быть установлены [зависимости проекта](https://github.com/BunchSoftware/Formula-Plus#зависимости)
 
 1. Клонирование репозитория или через программное обеспечение GitHub
 
-```git clone https://github.com/DSD-Games/Formula-Plus.git```
+```git clone https://github.com/BunchSoftware/Formula-Plus.git```
 
-2. Переход в директорию PhysicalCalculator
+2. Переход в директорию src
 3. Находим файл с расширением .pro по пути 
 
-```"Formula-Plus\src"```
+```"Formula-Plus\Formula-Plus.pro"```
 
 4. Запуск файла ```"Formula-Plus.pro"```  с помощью IDE Qt Creater
 
@@ -69,14 +69,14 @@
    - Параболла
 
 ## Документация
-Добро пожаловать в документацию Formula Plus! Просто начните работу, после изучения [*Документации*](Documentation/ru/index.md). Formula Plus был образован на Framework Qt Creator, на языке программирования C++. Вам не хватает некоторых решений в Formula Plus ? Тогда присоединяйтесь к нам, чтобы дополнить приложение новыми функциями.
+Добро пожаловать в документацию Formula Plus! Просто начните работу, после изучения [*Документации*](doc/ru/index.md). Formula Plus был образован на Framework Qt Creator, на языке программирования C++. Вам не хватает некоторых решений в Formula Plus ? Тогда присоединяйтесь к нам, чтобы дополнить приложение новыми функциями.
 
 ## Поддержка
 Если у вас возникли сложности или вопросы по использованию приложения, создайте 
-[обсуждение](https://github.com/DSD-Games/Formula-Plus/issues/new/choose) в данном репозитории или напишите на электронную почту <den4oman@mail.ru>.
+[обсуждение](https://github.com/BunchSoftware/Formula-Plus/issues/new/choose) в данном репозитории или напишите на электронную почту <den4oman@mail.ru>.
 
 ## Зависимости
-Эта программа зависит от компилятора Desktop Qt MinGW 64-bit или 32-bit версии 5.14.2 или выше. Если вы заметили, что данное ПО можно запустить на версии ниже, или он не работает на какой-либо версии, то напишите в [поддержку](https://github.com/DSD-Games/Formula-Plus#поддержка)
+Эта программа зависит от компилятора Desktop Qt MinGW 64-bit или 32-bit версии 5.14.2 или выше. Если вы заметили, что данное ПО можно запустить на версии ниже, или он не работает на какой-либо версии, то напишите в [поддержку](https://github.com/BunchSoftware/Formula-Plus#поддержка)
 ## Языки
 Данное приложение реализуется на таких языках:
   - русский

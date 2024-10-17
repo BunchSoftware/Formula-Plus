@@ -1,34 +1,34 @@
-# Physical-Calculator
+# Formula-Plus
 Программное обеспечение для математических и физических вычислений
 
-![Static Badge](https://img.shields.io/badge/DSD-Games/Physical-Calculator)
-![GitHub top language](https://img.shields.io/github/languages/top/DSD-Games/Physical-Calculator)
-![GitHub](https://img.shields.io/github/license/DSD-Games/Physical-Calculator)
-![GitHub Repo stars](https://img.shields.io/github/stars/DSD-Games/Physical-Calculator)
-![GitHub issues](https://img.shields.io/github/issues/DSD-Games/Physical-Calculator)
+![Static Badge](https://img.shields.io/badge/DSD-Games/Formula-Plus)
+![GitHub top language](https://img.shields.io/github/languages/top/DSD-Games/Formula-Plus)
+![GitHub](https://img.shields.io/github/license/DSD-Games/Formula-Plus)
+![GitHub Repo stars](https://img.shields.io/github/stars/DSD-Games/Formula-Plus)
+![GitHub issues](https://img.shields.io/github/issues/DSD-Games/Formula-Plus)
 
 ![Logotype](Documentation/images/logotype.png)
 
 ## Установка проекта (Windows)
-У вас должны быть установлены [зависимости проекта](https://github.com/DSD-Games/Physical-Calculator#зависимости)
+У вас должны быть установлены [зависимости проекта](https://github.com/DSD-Games/Formula-Plus#зависимости)
 
 1. Клонирование репозитория или через программное обеспечение GitHub
 
-```git clone https://github.com/DSD-Games/Physical-Calculator.git```
+```git clone https://github.com/DSD-Games/Formula-Plus.git```
 
 2. Переход в директорию PhysicalCalculator
 3. Находим файл с расширением .pro по пути 
 
-```"Physical-Calculator\PhysicalCalculator"```
+```"Formula-Plus\src"```
 
-4. Запуск файла ```"PhysicalCalculator.pro"```  с помощью IDE Qt Creater
+4. Запуск файла ```"Formula-Plus.pro"```  с помощью IDE Qt Creater
 
 5. Все готово к дальнейшей работе !
 
 ## Запуск (Windows)
 1. Переходим по пути
 ```"Build/release/"```
-1. Запускаем файл  ```"PhysicalCalculator.exe"```
+1. Запускаем файл  ```"Formula-Plus.exe"```
 2. Все готово, можно пользоваться !
 
 ## Функции
@@ -69,14 +69,14 @@
    - Параболла
 
 ## Документация
-Добро пожаловать в документацию Physical Calculator! Просто начните работу, после изучения [*Документации*](Documentation/ru/index.md). Physical Calculator был образован на Framework Qt Creator, на языке программирования C++. Вам не хватает некоторых решений в Physical Calculator ? Тогда присоединяйтесь к нам, чтобы дополнить приложение новыми функциями.
+Добро пожаловать в документацию Formula Plus! Просто начните работу, после изучения [*Документации*](Documentation/ru/index.md). Formula Plus был образован на Framework Qt Creator, на языке программирования C++. Вам не хватает некоторых решений в Formula Plus ? Тогда присоединяйтесь к нам, чтобы дополнить приложение новыми функциями.
 
 ## Поддержка
 Если у вас возникли сложности или вопросы по использованию приложения, создайте 
-[обсуждение](https://github.com/DSD-Games/Physical-Calculator/issues/new/choose) в данном репозитории или напишите на электронную почту <den4oman@mail.ru>.
+[обсуждение](https://github.com/DSD-Games/Formula-Plus/issues/new/choose) в данном репозитории или напишите на электронную почту <den4oman@mail.ru>.
 
 ## Зависимости
-Эта программа зависит от компилятора Desktop Qt MinGW 64-bit или 32-bit версии 5.14.2 или выше. Если вы заметили, что данное ПО можно запустить на версии ниже, или он не работает на какой-либо версии, то напишите в [поддержку](https://github.com/DSD-Games/Physical-Calculator#поддержка)
+Эта программа зависит от компилятора Desktop Qt MinGW 64-bit или 32-bit версии 5.14.2 или выше. Если вы заметили, что данное ПО можно запустить на версии ниже, или он не работает на какой-либо версии, то напишите в [поддержку](https://github.com/DSD-Games/Formula-Plus#поддержка)
 ## Языки
 Данное приложение реализуется на таких языках:
   - русский

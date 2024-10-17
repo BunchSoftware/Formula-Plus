@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>mainWindow.qml</file>
+        <file>physicalCalculatorForm.qml</file>
+        <file>plottingForm.qml</file>
+        <file>parserForm.qml</file>
+        <file>familiarizationForm.qml</file>
+        <file>errorForm.qml</file>
+        <file>calculateForm.qml</file>
+        <file>aboutForm.qml</file>
+    </qresource>
+</RCC>

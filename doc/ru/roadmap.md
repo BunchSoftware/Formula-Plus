@@ -1,6 +1,6 @@
-# Physical Calculator Roadmap
+# Formula Plus Roadmap
 
-Physical Calculator находится в активной стадии разработки в команде ГПО от университета ТУСУР
+Formula Plus находится в активной стадии разработки в команде ГПО от университета ТУСУР
 
 ### [Оглавление](index.md)
 

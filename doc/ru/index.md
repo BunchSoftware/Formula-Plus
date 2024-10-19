@@ -1,5 +1,5 @@
-# Physical Calculator Docs RU
-Пользовательская документация Physical Calculator  на русском
+# Formula Plus Docs RU
+Пользовательская документация Formula Plus на русском
 
 ## Оглавление
 1. [Введение](getting-started.md)
@@ -7,7 +7,7 @@
 3. [Математический парсер](math-parser.md)
 4. [Физический парсер](physic-parser.md)
 5. [Путь развития приложения](roadmap.md)
-6. [Ручное тестирование Physical Calculator](physical-calculator-manual-tests.md)
+6. [Ручное тестирование Formula Plus](physical-calculator-manual-tests.md)
 6. [Поддержка](support.md)
 7. [Жизнь проект](health-project.md)
 

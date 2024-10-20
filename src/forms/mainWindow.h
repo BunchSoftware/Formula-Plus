@@ -13,7 +13,7 @@ public:
   Q_INVOKABLE void onSuggestFeatureTriggered();
   Q_INVOKABLE void onGetReviewTriggered();
   Q_INVOKABLE void onAboutDocumentationTriggered();
-  Q_INVOKABLE void onAboutProgrammTriggered();
+  Q_INVOKABLE void onAboutProgramTriggered();
   Q_INVOKABLE void onLastProjectTriggered();
   Q_INVOKABLE void onOpenProjectTriggered();
   Q_INVOKABLE void onSaveProjectTriggered();

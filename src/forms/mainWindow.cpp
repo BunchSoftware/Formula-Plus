@@ -1,4 +1,6 @@
 #include "mainWindow.h"
+#include <QQmlApplicationEngine>
+#include <QQuickWindow>
 #include <QUrl>
 #include <qdesktopservices.h>
 
@@ -31,7 +33,8 @@ void MainWindow::onAboutDocumentationTriggered()
     QDesktopServices::openUrl(QUrl("https://github.com/BunchSoftware/Physical-Calculator/blob/master/Documentation/ru/index.md"));
 }
 
-void MainWindow::onAboutProgrammTriggered(){
+void MainWindow::onAboutProgramTriggered()
+{
 
 }
 

@@ -6,5 +6,7 @@
         <file>parserForm.qml</file>
         <file>familiarizationForm.qml</file>
         <file>calculateForm.qml</file>
+        <file>aboutForm.qml</file>
+        <file>errorForm.qml</file>
     </qresource>
 </RCC>

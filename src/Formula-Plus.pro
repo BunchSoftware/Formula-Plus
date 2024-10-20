@@ -1,4 +1,4 @@
-QT += core printsupport gui quick
+QT += core printsupport gui quick charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,7 +18,6 @@ SOURCES += \
     forms\familiarizationForm.cpp \
     main.cpp \
     forms\parserForm.cpp \
-    library\qcustomplot.cpp
 
 HEADERS += \
     forms\calculateForm.h \
@@ -31,7 +30,6 @@ HEADERS += \
     library\interpreter.h \
     forms\parserForm.h \
     library\physicInterpreter.h \
-    library\qcustomplot.h \
 
 
 # Default rules for deployment.

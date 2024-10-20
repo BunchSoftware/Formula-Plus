@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="mainWindow.qml">../../resource/mainWindow.qml</file>
+        <file alias="physicalCalculatorForm.qml">../../resource/physicalCalculatorForm.qml</file>
+        <file alias="plottingForm.qml">../../resource/plottingForm.qml</file>
+        <file alias="parserForm.qml">../../resource/parserForm.qml</file>
+        <file alias="familiarizationForm.qml">../../resource/familiarizationForm.qml</file>
+        <file alias="calculateForm.qml">../../resource/calculateForm.qml</file>
+    </qresource>
+</RCC>

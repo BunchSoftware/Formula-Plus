@@ -23,6 +23,6 @@ int main(int argc, char **argv)
   }, Qt::QueuedConnection);
   engine.load(url);
 
-    app.setWindowIcon(QIcon("qrc:/../../Documentation/images/logotype.png"));
-    return app.exec();
+  app.setWindowIcon(QIcon(":/images/logotype.png"));
+  return app.exec();
 }

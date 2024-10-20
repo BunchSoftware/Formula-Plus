@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QTimer>
-#include "library/qcustomplot.h"
 
 class PlottingForm : public QObject
 {

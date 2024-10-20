@@ -9,7 +9,7 @@ ApplicationWindow {
     visible: true
     minimumWidth: 1000
     minimumHeight: 700
-    title: qsTr("PhysicalCalculator")
+    title: qsTr("Formula Plus")
 
     MainWindow {
         id: mainWindowGeneric
@@ -401,7 +401,12 @@ ApplicationWindow {
                     }
                 }
                 MenuItem {
-                    text: "О программе Physical Calculator"
+                    text: "О программе Formula Plus"
+                    onTriggered: {
+                        var component = Qt.createComponent("aboutForm.qml")
+                        var window = component.createObject(applicationWindow)
+                        window.show()
+                    }
                 }
             }
             Menu {

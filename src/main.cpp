@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv)
 {
-  QGuiApplication app(argc, argv);
+  QApplication app(argc, argv);
 
   qmlRegisterType<ParserForm>("Forms", 1, 0, "ParserForm");
   qmlRegisterType<CalculateForm>("Forms", 1, 0, "CalculateForm");

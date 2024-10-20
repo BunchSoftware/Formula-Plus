@@ -96,7 +96,7 @@ Bunch Software, 2022-2024 г. Все права защищены. \n
                     color: "black"
                 }
                 onClicked: {
-
+                    root.close()
                 }
             }
         }

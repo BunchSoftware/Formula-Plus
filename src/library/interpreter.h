@@ -12,6 +12,9 @@
 #include <stdexcept>
 #include <iostream>
 
+#define M_PI 3.14159265358979323846
+#define M_E 2.71828182845904523536
+
 namespace Interpreter {
 
 // Операторы для математических выражений
@@ -423,12 +426,12 @@ private:
                 { Operator::Procent, MakeEvaluator(1, [=](Args a) { return a[0]/100; }) },
                 { Operator::Exponentiation, MakeEvaluator(2, [=](Args a) { return pow(a[0], a[1]); }) },
                 { Operator::Extraction, MakeEvaluator(1, [=](Args a) { return sqrt(a[0]); }) },
-                { Operator::Sin, MakeEvaluator(1, [=](Args a) {return sin(a[0]); }) },
-                { Operator::Cos, MakeEvaluator(1, [=](Args a) { return cos(a[0]); }) },
-                { Operator::Tan, MakeEvaluator(1, [=](Args a) { return tan(a[0]); }) },
-                { Operator::Log, MakeEvaluator(1, [=](Args a) { return log(a[0]); }) },
-                { Operator::Pi, MakeEvaluator(0, [=](Args a) { return 3.14159265358979323846; }) },
-                { Operator::E, MakeEvaluator(0, [=](Args a) { return  2.71828182845904523536; }) }
+                { Operator::Sin, MakeEvaluator(1, [=](Args a) {return sin(a[0] / 180 * M_PI); }) },
+                { Operator::Cos, MakeEvaluator(1, [=](Args a) { return cos(a[0] / 180 * M_PI); }) },
+                { Operator::Tan, MakeEvaluator(1, [=](Args a) { return tan(a[0] / 180 * M_PI); }) },
+                { Operator::Log, MakeEvaluator(1, [=](Args a) { return log(a[0] / 180 * M_PI); }) },
+                { Operator::Pi, MakeEvaluator(0, [=](Args a) { return M_PI; }) },
+                { Operator::E, MakeEvaluator(0, [=](Args a) { return M_E; }) }
         };
         try {
             evaluators.at(op)(m_stack);

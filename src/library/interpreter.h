@@ -20,7 +20,7 @@ namespace Interpreter {
 // Операторы для математических выражений
 enum class Operator {
     Plus, Minus, Mul, Div, LParen, RParen, UPlus, UMinus, Procent,
-    Exponentiation, Extraction, Factorial, Sin, Cos, Tan, Log, Pi, E,
+    Exponentiation, Extraction, Factorial, Sin, Cos, Tan, Log, Pi, E, Cot, Ln
 };
 
 // Inline - ключевое слово для встраивания функции в коде. Ускоряет работу кода, но не всегда
@@ -34,14 +34,11 @@ inline std::wstring ToString(const Operator &op) {
             { Operator::Procent, L"%" }, { Operator:: Exponentiation, L"^" },
             { Operator::Extraction, L"sqrt(" }, { Operator::Factorial, L"!" },
             { Operator::Sin, L"sin(" }, { Operator::Cos, L"cos(" },
-            { Operator::Tan, L"tan(" }, { Operator::Log, L"log(" },
+            { Operator::Tan, L"tan(" }, { Operator::Cot, L"cot(" },
+            { Operator::Log, L"log(" }, { Operator::Ln, L"ln(" },
             { Operator::Pi, L"π" }, { Operator::E, L"e" },
     };
-    try {
-         return opmap.at(op);
-    } catch (std::exception a) {
-        std::cout << a.what() << "1";
-    }
+     return opmap.at(op);
 }
 
 // Преобразование из double в wstring - обьемных строка, строковый класс для широких символов
@@ -213,14 +210,11 @@ private:
               {  L"%" ,  Operator::Procent }, { L"^", Operator:: Exponentiation},
               {  L"sqrt(", Operator::Extraction}, { L"!", Operator::Factorial },
               {  L"sin(", Operator::Sin }, { L"cos(", Operator::Cos },
-              {  L"tan(", Operator::Tan }, { L"log(", Operator::Log },
+              {  L"tan(", Operator::Tan }, { L"cot(",  Operator::Cot},
+              {  L"log(", Operator::Log },{ L"ln(" ,Operator::Ln},
               {  L"π", Operator::Pi }, { L"e", Operator::E },
       };
-        try {
-        return opmap;
-        } catch (std::exception a) {
-            std::cout << a.what() << 2;
-        }
+      return opmap;
     }
 
     // Является ли символ оператором
@@ -287,7 +281,7 @@ template<typename T> int PrecedenceOf(const T &token) {
     if(token == Operator::Pi || token == Operator::E) return 5;
     if(token == Operator::Exponentiation || token == Operator::Extraction) return 2;
     if(token == Operator::Mul || token == Operator::Div) return 4;
-    if(token == Operator::Sin || token == Operator::Cos || token == Operator::Tan || token == Operator::Log) return 3;
+    if(token == Operator::Sin || token == Operator::Cos || token == Operator::Tan || token == Operator::Log || token == Operator::Cot || token == Operator::Ln) return 3;
     if(token == Operator::Exponentiation || token == Operator::Extraction) return 2;
     if(token == Operator::Procent) return 1;
     return 0;
@@ -366,7 +360,9 @@ private:
         if(std::find(m_stack.begin(), m_stack.end(), Operator::Sin) != m_stack.end() ||
            std::find(m_stack.begin(), m_stack.end(), Operator::Cos) != m_stack.end() ||
            std::find(m_stack.begin(), m_stack.end(), Operator::Tan) != m_stack.end() ||
+           std::find(m_stack.begin(), m_stack.end(), Operator::Cot) != m_stack.end() ||
            std::find(m_stack.begin(), m_stack.end(), Operator::Log) != m_stack.end() ||
+           std::find(m_stack.begin(), m_stack.end(), Operator::Ln) != m_stack.end() ||
            std::find(m_stack.begin(), m_stack.end(), Operator::Extraction) != m_stack.end())
            return true;
         else
@@ -429,7 +425,9 @@ private:
                 { Operator::Sin, MakeEvaluator(1, [=](Args a) {return sin(a[0] / 180 * M_PI); }) },
                 { Operator::Cos, MakeEvaluator(1, [=](Args a) { return cos(a[0] / 180 * M_PI); }) },
                 { Operator::Tan, MakeEvaluator(1, [=](Args a) { return tan(a[0] / 180 * M_PI); }) },
-                { Operator::Log, MakeEvaluator(1, [=](Args a) { return log(a[0] / 180 * M_PI); }) },
+                { Operator::Cot, MakeEvaluator(1, [=](Args a) { return cos(a[0] / 180 * M_PI) / sin(a[0] / 180 * M_PI); }) },
+                { Operator::Log, MakeEvaluator(1, [=](Args a) { return log10l(a[0]); }) },
+                { Operator::Ln, MakeEvaluator(1, [=](Args a) { return log(a[0]); }) },
                 { Operator::Pi, MakeEvaluator(0, [=](Args a) { return M_PI; }) },
                 { Operator::E, MakeEvaluator(0, [=](Args a) { return M_E; }) }
         };

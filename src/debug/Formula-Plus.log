@@ -16,34 +16,30 @@ F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_E
   
 F:\Files\GitHub\Formula-Plus\src\forms\parserForm.cpp(6,33): warning C4100: parent: неиспользованный формальный параметр
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(5,13): warning C4081: требуется "newline"; обнаружен ";"
-  (компиляция исходного файла "forms/calculateForm.cpp")
+  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
   
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(15,9): warning C4005: M_PI: изменение макроопределения
-  (компиляция исходного файла "forms/calculateForm.cpp")
+  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(209,9):
       см. предыдущее определение "M_PI"
   
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_E: изменение макроопределения
-  (компиляция исходного файла "forms/calculateForm.cpp")
+  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
       см. предыдущее определение "M_E"
   
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(5,13): warning C4081: требуется "newline"; обнаружен ";"
-  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
+  (компиляция исходного файла "forms/calculateForm.cpp")
   
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(15,9): warning C4005: M_PI: изменение макроопределения
-  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
+  (компиляция исходного файла "forms/calculateForm.cpp")
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(209,9):
       см. предыдущее определение "M_PI"
   
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_E: изменение макроопределения
-  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
+  (компиляция исходного файла "forms/calculateForm.cpp")
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
       см. предыдущее определение "M_E"
   
 F:\Files\GitHub\Formula-Plus\src\forms\calculateForm.cpp(6,39): warning C4100: parent: неиспользованный формальный параметр
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(224,1): warning C4715: Interpreter::Lexer::Detail::Tokenizer::CharToOperatorMap: значение возвращается не при всех путях выполнения
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(45,1): warning C4715: Interpreter::ToString: значение возвращается не при всех путях выполнения
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(224,1): warning C4715: Interpreter::Lexer::Detail::Tokenizer::CharToOperatorMap: значение возвращается не при всех путях выполнения
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(45,1): warning C4715: Interpreter::ToString: значение возвращается не при всех путях выполнения
   Formula-Plus.vcxproj -> F:\Files\GitHub\Formula-Plus\src\debug\Formula-Plus.exe

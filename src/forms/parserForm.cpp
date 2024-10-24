@@ -43,7 +43,8 @@ void ParserForm::calculate()
     double result = Interpreter::InterpreteExperssion(text);
     setTextOutput("Результат: " + QString::number(result));
   }
-  catch (...) {
+  catch (std::exception exc) {
+      qDebug() << exc.what();
     setTextOutput("Ошибка в выражении");
   }
 }

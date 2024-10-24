@@ -27,6 +27,7 @@ HEADERS += \
     forms\plottingForm.h \
     forms\aboutWindow.h \
     forms\familiarizationForm.h \
+    library/equationInterpreter.h \
     library\interpreter.h \
     forms\parserForm.h \
     library\physicInterpreter.h \

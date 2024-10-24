@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <memory>
 #include <stdexcept>
+#include <iostream>
 
 namespace Interpreter {
 
@@ -29,11 +30,15 @@ inline std::wstring ToString(const Operator &op) {
             { Operator::UPlus, L"u+" }, { Operator::UMinus, L"u-" },
             { Operator::Procent, L"%" }, { Operator:: Exponentiation, L"^" },
             { Operator::Extraction, L"sqrt(" }, { Operator::Factorial, L"!" },
-            { Operator::Sin, L"sin[" }, { Operator::Cos, L"cos(" },
+            { Operator::Sin, L"sin(" }, { Operator::Cos, L"cos(" },
             { Operator::Tan, L"tan(" }, { Operator::Log, L"log(" },
             { Operator::Pi, L"π" }, { Operator::E, L"e" },
     };
-    return opmap.at(op);
+    try {
+         return opmap.at(op);
+    } catch (std::exception a) {
+        std::cout << a.what() << "1";
+    }
 }
 
 // Преобразование из double в wstring - обьемных строка, строковый класс для широких символов
@@ -208,13 +213,18 @@ private:
               {  L"tan(", Operator::Tan }, { L"log(", Operator::Log },
               {  L"π", Operator::Pi }, { L"e", Operator::E },
       };
+        try {
         return opmap;
+        } catch (std::exception a) {
+            std::cout << a.what() << 2;
+        }
     }
 
     // Является ли символ оператором
     bool IsOperator(){
         w_current.push_back(*m_current);
-        return CharToOperatorMap().find(w_current) != CharToOperatorMap().end();
+        std::unordered_map<std::wstring, Operator> map = CharToOperatorMap();
+        return map.find(w_current) != map.end();
     }
 
     // Поиск и обработка операторов
@@ -413,14 +423,18 @@ private:
                 { Operator::Procent, MakeEvaluator(1, [=](Args a) { return a[0]/100; }) },
                 { Operator::Exponentiation, MakeEvaluator(2, [=](Args a) { return pow(a[0], a[1]); }) },
                 { Operator::Extraction, MakeEvaluator(1, [=](Args a) { return sqrt(a[0]); }) },
-                { Operator::Sin, MakeEvaluator(1, [=](Args a) { return sin(a[0]); }) },
+                { Operator::Sin, MakeEvaluator(1, [=](Args a) {return sin(a[0]); }) },
                 { Operator::Cos, MakeEvaluator(1, [=](Args a) { return cos(a[0]); }) },
                 { Operator::Tan, MakeEvaluator(1, [=](Args a) { return tan(a[0]); }) },
                 { Operator::Log, MakeEvaluator(1, [=](Args a) { return log(a[0]); }) },
                 { Operator::Pi, MakeEvaluator(0, [=](Args a) { return 3.14159265358979323846; }) },
                 { Operator::E, MakeEvaluator(0, [=](Args a) { return  2.71828182845904523536; }) }
         };
-        evaluators.at(op)(m_stack);
+        try {
+            evaluators.at(op)(m_stack);
+        } catch (std::exception a) {
+            std::cout << a.what() << 3;
+        }
     }
     // Обработка числового значения в математических выражениях
     void Visit(double num) override {

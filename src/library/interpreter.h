@@ -426,6 +426,7 @@ private:
         const static std::unordered_map<Operator, std::function<void(OpStack &)>> evaluators{
                 { Operator::Plus, MakeEvaluator(2, [=](Args a) { return a[0] + a[1]; }) },
                 { Operator::Minus, MakeEvaluator(2, [=](Args a) { return a[0] - a[1]; }) },
+                { Operator::UMinus, MakeEvaluator(1, [=](Args a) { return -a[0]; }) },
                 { Operator::Mul, MakeEvaluator(2, [=](Args a) { return a[0] * a[1]; }) },
                 { Operator::Div, MakeEvaluator(2, [=](Args a) { return a[0] / a[1]; }) },
                 { Operator::Procent, MakeEvaluator(1, [=](Args a) { return a[0]/100; }) },

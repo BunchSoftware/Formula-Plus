@@ -1,48 +1,19 @@
 ﻿   Qt/MSBuild: 3.3.0.13
    Qt: 6.7.0
-  calculateForm.cpp
   parserForm.cpp
-  physicalCalculateForm.cpp
 F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(5,13): warning C4081: требуется "newline"; обнаружен ";"
   (компиляция исходного файла "forms/parserForm.cpp")
   
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(15,9): warning C4005: M_PI: изменение макроопределения
+P:\Program\Visual Studio 2022\VC\Tools\MSVC\14.41.34120\include\format(42): warning STL4038: The contents of <format> are available only with C++20 or later.
+F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_PI: изменение макроопределения
   (компиляция исходного файла "forms/parserForm.cpp")
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(209,9):
       см. предыдущее определение "M_PI"
   
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_E: изменение макроопределения
+F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(17,9): warning C4005: M_E: изменение макроопределения
   (компиляция исходного файла "forms/parserForm.cpp")
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
       см. предыдущее определение "M_E"
   
 F:\Files\GitHub\Formula-Plus\src\forms\parserForm.cpp(6,33): warning C4100: parent: неиспользованный формальный параметр
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(5,13): warning C4081: требуется "newline"; обнаружен ";"
-  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
-  
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(15,9): warning C4005: M_PI: изменение макроопределения
-  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
-      P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(209,9):
-      см. предыдущее определение "M_PI"
-  
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_E: изменение макроопределения
-  (компиляция исходного файла "forms/physicalCalculateForm.cpp")
-      P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
-      см. предыдущее определение "M_E"
-  
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(5,13): warning C4081: требуется "newline"; обнаружен ";"
-  (компиляция исходного файла "forms/calculateForm.cpp")
-  
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(15,9): warning C4005: M_PI: изменение макроопределения
-  (компиляция исходного файла "forms/calculateForm.cpp")
-      P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(209,9):
-      см. предыдущее определение "M_PI"
-  
-F:\Files\GitHub\Formula-Plus\src\library\interpreter.h(16,9): warning C4005: M_E: изменение макроопределения
-  (компиляция исходного файла "forms/calculateForm.cpp")
-      P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
-      см. предыдущее определение "M_E"
-  
-F:\Files\GitHub\Formula-Plus\src\forms\calculateForm.cpp(6,39): warning C4100: parent: неиспользованный формальный параметр
-  LINK : не найден или не выполнена сборка debug\\Formula-Plus.exe при последней инкрементной компоновке; выполняется полная компоновка
   Formula-Plus.vcxproj -> F:\Files\GitHub\Formula-Plus\src\debug\Formula-Plus.exe

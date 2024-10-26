@@ -41,10 +41,10 @@ void ParserForm::calculate()
   try {
     std::wstring text = textInput().toStdWString();
     double result = Interpreter::InterpreteExperssion(text);
-    setTextOutput("Результат: " + QString::number(result));
+    setTextOutput("Результат: " + QString::number(result, 'g', 15));
   }
   catch (std::exception exc) {
-      qDebug() << exc.what();
-    setTextOutput("Ошибка в выражении");
+    std::string text = (std::string)exc.what();
+    setTextOutput(QString::fromStdString(text));
   }
 }

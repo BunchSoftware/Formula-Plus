@@ -11,6 +11,7 @@
 #include <memory>
 #include <stdexcept>
 #include <iostream>
+#include <format>
 
 #define M_PI 3.14159265358979323846
 #define M_E 2.71828182845904523536
@@ -233,7 +234,15 @@ private:
                 }
                 else if (map.find(w_current) == map.end())
                 {
-                    m_current++;
+                    if (m_current[0] != *L"")
+                        m_current++;
+                    else
+                    {
+                        std::string exception(w_current.begin(), w_current.end());
+                        setlocale(LC_ALL, "rus");
+                        std::string text = "Неизвестное выражение: " + exception;
+                        throw std::logic_error(text);
+                    }
                     w_current.push_back(*m_current);
                 }
             }

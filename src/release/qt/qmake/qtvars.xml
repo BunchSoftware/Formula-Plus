@@ -1,0 +1,41 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+<Qt_DEFINES_>_WINDOWS;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NDEBUG;QT_NO_DEBUG;QT_QUICK_LIB;QT_CHARTS_LIB;QT_OPENGLWIDGETS_LIB;QT_OPENGL_LIB;QT_PRINTSUPPORT_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QMLMODELS_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_QMLINTEGRATION_LIB;QT_CORE_LIB</Qt_DEFINES_>
+<Qt_INCLUDEPATH_>"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtQuick";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCharts";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtOpenGLWidgets";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtOpenGL";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtPrintSupport";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtWidgets";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtGui";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtQmlModels";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtQml";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtNetwork";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtQmlIntegration";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\mkspecs\win32-msvc"</Qt_INCLUDEPATH_>
+<Qt_STDCPP_>stdcpp17</Qt_STDCPP_>
+<Qt_RUNTIME_>MultiThreadedDLL</Qt_RUNTIME_>
+<Qt_CL_OPTIONS_>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -utf-8</Qt_CL_OPTIONS_>
+<Qt_LIBS_>"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Quick.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Charts.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6OpenGLWidgets.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6OpenGL.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6PrintSupport.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Widgets.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Gui.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6QmlModels.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Qml.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Network.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6Core.lib";"P:\Program\Qt\Qt 6.7.0\msvc2019_64\lib\Qt6EntryPoint.lib";shell32.lib</Qt_LIBS_>
+<Qt_LINK_OPTIONS_>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"</Qt_LINK_OPTIONS_>
+<QMake_QT_SYSROOT_></QMake_QT_SYSROOT_>
+<QMake_QT_INSTALL_PREFIX_>P:/Program/Qt/Qt 6.7.0/msvc2019_64</QMake_QT_INSTALL_PREFIX_>
+<QMake_QT_INSTALL_ARCHDATA_>P:/Program/Qt/Qt 6.7.0/msvc2019_64</QMake_QT_INSTALL_ARCHDATA_>
+<QMake_QT_INSTALL_DATA_>P:/Program/Qt/Qt 6.7.0/msvc2019_64</QMake_QT_INSTALL_DATA_>
+<QMake_QT_INSTALL_DOCS_>P:/Program/Qt/Docs/Qt-6.7.0</QMake_QT_INSTALL_DOCS_>
+<QMake_QT_INSTALL_HEADERS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/include</QMake_QT_INSTALL_HEADERS_>
+<QMake_QT_INSTALL_LIBS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/lib</QMake_QT_INSTALL_LIBS_>
+<QMake_QT_INSTALL_LIBEXECS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin</QMake_QT_INSTALL_LIBEXECS_>
+<QMake_QT_INSTALL_BINS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin</QMake_QT_INSTALL_BINS_>
+<QMake_QT_INSTALL_TESTS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/tests</QMake_QT_INSTALL_TESTS_>
+<QMake_QT_INSTALL_PLUGINS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/plugins</QMake_QT_INSTALL_PLUGINS_>
+<QMake_QT_INSTALL_QML_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/qml</QMake_QT_INSTALL_QML_>
+<QMake_QT_INSTALL_TRANSLATIONS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/translations</QMake_QT_INSTALL_TRANSLATIONS_>
+<QMake_QT_INSTALL_CONFIGURATION_></QMake_QT_INSTALL_CONFIGURATION_>
+<QMake_QT_INSTALL_EXAMPLES_>P:/Program/Qt/Examples/Qt-6.7.0</QMake_QT_INSTALL_EXAMPLES_>
+<QMake_QT_INSTALL_DEMOS_>P:/Program/Qt/Examples/Qt-6.7.0</QMake_QT_INSTALL_DEMOS_>
+<QMake_QT_HOST_PREFIX_>P:/Program/Qt/Qt 6.7.0/msvc2019_64</QMake_QT_HOST_PREFIX_>
+<QMake_QT_HOST_DATA_>P:/Program/Qt/Qt 6.7.0/msvc2019_64</QMake_QT_HOST_DATA_>
+<QMake_QT_HOST_BINS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin</QMake_QT_HOST_BINS_>
+<QMake_QT_HOST_LIBEXECS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin</QMake_QT_HOST_LIBEXECS_>
+<QMake_QT_HOST_LIBS_>P:/Program/Qt/Qt 6.7.0/msvc2019_64/lib</QMake_QT_HOST_LIBS_>
+<QMake_QMAKE_SPEC_>win32-msvc</QMake_QMAKE_SPEC_>
+<QMake_QMAKE_XSPEC_>win32-msvc</QMake_QMAKE_XSPEC_>
+<QMake_QMAKE_VERSION_>3.1</QMake_QMAKE_VERSION_>
+<QMake_QT_VERSION_>6.7.0</QMake_QT_VERSION_>
+<QtBkup_QtHash>jVHRasMwDPwVfUHTjdGxhz64suZqcWRHllvKGPn/v5gTUgJ7WR6EQb476U7f7EmM7XEeDU6H98NxGsoNX48vH9PpDTApQagMQnZP2sM4RBgrYw939oGsQMokIa7Ps5mVxUrNOakBXp024IVlKU+fLFTOXdb0RWgdGw1Lk42TBE01dxgxDZkjNRQ1IFIpSTdUARaM1VN2dt0r5bxfRri4kj1rWyApU4FiHnPeKxWdhOoCFXPinXrQ2mIcaC9/hUe+qNMHYJxSnt3vjmXzshKhaf3Dbrb7biO28Eja+XG2P//t2+GPynO8UiRX6OcX</QtBkup_QtHash>
+    <QtVersion>6.7.0</QtVersion>
+    <QtVersionMajor>6</QtVersionMajor>
+    <QtVersionMinor>7</QtVersionMinor>
+    <QtVersionPatch>0</QtVersionPatch>
+  </PropertyGroup>
+</Project>

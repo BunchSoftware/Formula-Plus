@@ -19,7 +19,7 @@ namespace Interpreter {
 
 // Операторы для математических выражений
 enum class Operator {
-    Plus, Minus, Mul, Div, LParen, RParen, UPlus, UMinus, Procent,
+    Plus, Minus, Mul, Div, LParen, RParen, UMinus, Procent,
     Exponentiation, Extraction, Factorial, Sin, Cos, Tan, Log, Pi, E, Cot, Ln
 };
 
@@ -30,7 +30,7 @@ inline std::wstring ToString(const Operator &op) {
             { Operator::Plus, L"+" }, { Operator::Minus, L"-" },
             { Operator::Mul, L"*" }, { Operator::Div, L"/" },
             { Operator::LParen, L"(" }, { Operator::RParen, L")" },
-            { Operator::UPlus, L"u+" }, { Operator::UMinus, L"u-" },
+            { Operator::UMinus, L"u-" },
             { Operator::Procent, L"%" }, { Operator:: Exponentiation, L"^" },
             { Operator::Extraction, L"sqrt(" }, { Operator::Factorial, L"!" },
             { Operator::Sin, L"sin(" }, { Operator::Cos, L"cos(" },
@@ -177,7 +177,7 @@ public:
     void Tokenize(const std::wstring &expression) {
         for(m_current = expression.c_str(); *m_current;) {
             // Является ли символ числом
-            if(IsNumber())
+             if(IsNumber())
                 ScanNumber();
             // Является ли символ оператором
             else if(IsOperator())
@@ -185,7 +185,7 @@ public:
             // Пропускаем, если является пробелом или неопозноным обьектом
             else
               {
-                ++m_current;
+                m_current++;
               }
         }
     }
@@ -206,7 +206,7 @@ private:
               {  L"+" , Operator::Plus}, { L"-", Operator::Minus},
               {  L"*" , Operator::Mul}, { L"/", Operator::Div},
               {  L"(" , Operator::LParen}, { L")", Operator::RParen},
-              {  L"u+", Operator::UPlus}, { L"u-", Operator::UMinus},
+              { L"u-", Operator::UMinus},
               {  L"%" ,  Operator::Procent }, { L"^", Operator:: Exponentiation},
               {  L"sqrt(", Operator::Extraction}, { L"!", Operator::Factorial },
               {  L"sin(", Operator::Sin }, { L"cos(", Operator::Cos },
@@ -218,17 +218,33 @@ private:
     }
 
     // Является ли символ оператором
-    bool IsOperator(){
-        w_current.push_back(*m_current);
-        std::unordered_map<std::wstring, Operator> map = CharToOperatorMap();
-        return map.find(w_current) != map.end();
+    bool IsOperator()
+    {
+        if (m_current[0] != *L" ")
+        {
+            w_current.push_back(*m_current);
+            for (int i = 0; i < w_current.size(); i++)
+            {
+                std::unordered_map<std::wstring, Operator> map = CharToOperatorMap();
+                if (map.find(w_current) != map.end())
+                {
+                    m_current++;
+                    return true;
+                }
+                else if (map.find(w_current) == map.end())
+                {
+                    m_current++;
+                    w_current.push_back(*m_current);
+                }
+            }
+        }
+        return false;
     }
 
     // Поиск и обработка операторов
     void ScanOperator() {
         AddToResult(CharToOperatorMap().at(w_current));
         w_current.clear();
-        ++m_current;
     }
 
     const wchar_t *m_current = nullptr;
@@ -250,7 +266,6 @@ private:
 
     // Конвертирование в унарный оператор с проверкой
     static Operator TryConvertToUnary(Operator op) {
-        if(op == Operator::Plus) return Operator::UPlus;
         if(op == Operator::Minus) return Operator::UMinus;
         return op;
     }
@@ -276,16 +291,15 @@ inline Tokens MarkUnaryOperators(const Tokens &tokens) {
 namespace Parser {
 
 // Определение приоритетов в математическом выражении
-template<typename T> int PrecedenceOf(const T &token) {
-    if(token == Operator::UMinus) return 6;
-    if(token == Operator::Pi || token == Operator::E) return 5;
-    if(token == Operator::Exponentiation || token == Operator::Extraction) return 2;
-    if(token == Operator::Mul || token == Operator::Div) return 4;
-    if(token == Operator::Sin || token == Operator::Cos || token == Operator::Tan || token == Operator::Log || token == Operator::Cot || token == Operator::Ln) return 3;
-    if(token == Operator::Exponentiation || token == Operator::Extraction) return 2;
-    if(token == Operator::Procent) return 1;
-    return 0;
-}
+    template<typename T> int PrecedenceOf(const T& token) {
+        if (token == Operator::Pi || token == Operator::E) return 10;
+        if (token == Operator::UMinus) return 9;
+        if (token == Operator::Sin || token == Operator::Cos || token == Operator::Tan || token == Operator::Log || token == Operator::Cot || token == Operator::Ln) return 8;
+        if (token == Operator::Exponentiation || token == Operator::Extraction) return 7;
+        if (token == Operator::Mul || token == Operator::Div) return 6;
+        if (token == Operator::Procent) return 5;
+        return 0;
+    }
 
 namespace Detail {
 
@@ -301,18 +315,13 @@ private:
     // Посещение каждой части выражения и распределение операторов в правильном приоритете
     void Visit(Operator op) override {
         switch(op) {
-            case Operator::UPlus:
-                break;
             case Operator::UMinus:
             case Operator::LParen:
                 PushCurrentToStack(op);
                 break;
             case Operator::RParen:
                   if(UnaryOnTop() && isUnary == false)
-                  {
-                     isUnary = true;
                      break;
-                  }
                   else if(m_stack.back() == Operator::RParen)
                   {
                       isUnary = true;
@@ -431,11 +440,7 @@ private:
                 { Operator::Pi, MakeEvaluator(0, [=](Args a) { return M_PI; }) },
                 { Operator::E, MakeEvaluator(0, [=](Args a) { return M_E; }) }
         };
-        try {
-            evaluators.at(op)(m_stack);
-        } catch (std::exception a) {
-            std::cout << a.what() << 3;
-        }
+        evaluators.at(op)(m_stack);
     }
     // Обработка числового значения в математических выражениях
     void Visit(double num) override {

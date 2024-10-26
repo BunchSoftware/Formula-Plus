@@ -1,0 +1,25 @@
+QT_SYSROOT:
+QT_INSTALL_PREFIX:P:/Program/Qt/Qt 6.7.0/msvc2019_64
+QT_INSTALL_ARCHDATA:P:/Program/Qt/Qt 6.7.0/msvc2019_64
+QT_INSTALL_DATA:P:/Program/Qt/Qt 6.7.0/msvc2019_64
+QT_INSTALL_DOCS:P:/Program/Qt/Docs/Qt-6.7.0
+QT_INSTALL_HEADERS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/include
+QT_INSTALL_LIBS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/lib
+QT_INSTALL_LIBEXECS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin
+QT_INSTALL_BINS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin
+QT_INSTALL_TESTS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/tests
+QT_INSTALL_PLUGINS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/plugins
+QT_INSTALL_QML:P:/Program/Qt/Qt 6.7.0/msvc2019_64/qml
+QT_INSTALL_TRANSLATIONS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/translations
+QT_INSTALL_CONFIGURATION:
+QT_INSTALL_EXAMPLES:P:/Program/Qt/Examples/Qt-6.7.0
+QT_INSTALL_DEMOS:P:/Program/Qt/Examples/Qt-6.7.0
+QT_HOST_PREFIX:P:/Program/Qt/Qt 6.7.0/msvc2019_64
+QT_HOST_DATA:P:/Program/Qt/Qt 6.7.0/msvc2019_64
+QT_HOST_BINS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin
+QT_HOST_LIBEXECS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/bin
+QT_HOST_LIBS:P:/Program/Qt/Qt 6.7.0/msvc2019_64/lib
+QMAKE_SPEC:win32-msvc
+QMAKE_XSPEC:win32-msvc
+QMAKE_VERSION:3.1
+QT_VERSION:6.7.0

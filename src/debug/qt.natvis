@@ -260,7 +260,7 @@
         <DisplayString>{ucs,c}</DisplayString>
         <StringView>ucs,c</StringView>
         <Expand>
-            <Item Name="[latin 1]">ucs > 0xff ? '\0' : char(ucs),c</Item>
+            <Item Name="[latin 1]">ucs > 0xff ? 0 : ucs,c</Item>
             <Item Name="[unicode]">ucs,c</Item>
         </Expand>
     </Type>
@@ -394,13 +394,13 @@
         </Expand>
     </Type>
 
-   <Type Name="QVarLengthArray&lt;*&gt;">
+   <Type Name="QVarLengthArray&lt;*,*&gt;">
         <DisplayString>{{ size={s} }}</DisplayString>
         <Expand>
             <Item Name="[capacity]">a</Item>
             <ArrayItems>
                 <Size>s</Size>
-                <ValuePointer>ptr</ValuePointer>
+                <ValuePointer>reinterpret_cast&lt;$T1*&gt;(ptr)</ValuePointer>
             </ArrayItems>
         </Expand>
     </Type>

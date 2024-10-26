@@ -1,0 +1,9 @@
+import QtQuick 2.4
+import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
+import Qt.labs.animation 1.0
+import Forms 1.0
+import QtQuick 2.0
+import QtCharts 2.3
+import QtQuick.Layouts 1.14
+QmlObject { }

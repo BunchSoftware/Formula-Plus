@@ -19,7 +19,7 @@ namespace Interpreter {
 
 // Операторы для математических выражений
 enum class Operator {
-    Plus, Minus, Mul, Div, LParen, RParen, UMinus, Procent,
+    Plus, Minus, Mul, Div, LParen, RParen, UMinus, UPlus, Procent,
     Exponentiation, Extraction, Factorial, Sin, Cos, Tan, Log, Pi, E, Cot, Ln
 };
 
@@ -30,7 +30,7 @@ inline std::wstring ToString(const Operator &op) {
             { Operator::Plus, L"+" }, { Operator::Minus, L"-" },
             { Operator::Mul, L"*" }, { Operator::Div, L"/" },
             { Operator::LParen, L"(" }, { Operator::RParen, L")" },
-            { Operator::UMinus, L"u-" },
+            { Operator::UMinus, L"u-" },{ Operator::UPlus, L"u+" },
             { Operator::Procent, L"%" }, { Operator:: Exponentiation, L"^" },
             { Operator::Extraction, L"sqrt(" }, { Operator::Factorial, L"!" },
             { Operator::Sin, L"sin(" }, { Operator::Cos, L"cos(" },
@@ -206,7 +206,7 @@ private:
               {  L"+" , Operator::Plus}, { L"-", Operator::Minus},
               {  L"*" , Operator::Mul}, { L"/", Operator::Div},
               {  L"(" , Operator::LParen}, { L")", Operator::RParen},
-              { L"u-", Operator::UMinus},
+              {  L"u-", Operator::UMinus},{ L"u+", Operator::UPlus},
               {  L"%" ,  Operator::Procent }, { L"^", Operator:: Exponentiation},
               {  L"sqrt(", Operator::Extraction}, { L"!", Operator::Factorial },
               {  L"sin(", Operator::Sin }, { L"cos(", Operator::Cos },
@@ -267,6 +267,7 @@ private:
     // Конвертирование в унарный оператор с проверкой
     static Operator TryConvertToUnary(Operator op) {
         if(op == Operator::Minus) return Operator::UMinus;
+        if (op == Operator::Plus) return Operator::UPlus;
         return op;
     }
 
@@ -316,6 +317,7 @@ private:
     void Visit(Operator op) override {
         switch(op) {
             case Operator::UMinus:
+            case Operator::UPlus:
             case Operator::LParen:
                 PushCurrentToStack(op);
                 break;
@@ -427,6 +429,7 @@ private:
                 { Operator::Plus, MakeEvaluator(2, [=](Args a) { return a[0] + a[1]; }) },
                 { Operator::Minus, MakeEvaluator(2, [=](Args a) { return a[0] - a[1]; }) },
                 { Operator::UMinus, MakeEvaluator(1, [=](Args a) { return -a[0]; }) },
+                { Operator::UPlus, MakeEvaluator(1, [=](Args a) { return a[0]; }) },
                 { Operator::Mul, MakeEvaluator(2, [=](Args a) { return a[0] * a[1]; }) },
                 { Operator::Div, MakeEvaluator(2, [=](Args a) { return a[0] / a[1]; }) },
                 { Operator::Procent, MakeEvaluator(1, [=](Args a) { return a[0]/100; }) },

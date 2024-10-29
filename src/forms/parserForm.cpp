@@ -1,11 +1,11 @@
 #include "parserForm.h"
-#include "library/interpreter.h"
+#include "library/MathCPP/src/interpreter.h"
 
 using namespace std;
 
 ParserForm::ParserForm(QObject *parent)
 {
-
+    
 }
 
 QString ParserForm::textOutput()
@@ -38,6 +38,7 @@ void ParserForm::setTextInput(QString value)
 
 void ParserForm::calculate()
 {
+    //Tester::Test();
   try {
     std::wstring text = textInput().toStdWString();
     double result = Interpreter::InterpreteExperssion(text);

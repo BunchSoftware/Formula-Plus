@@ -85,7 +85,8 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DISABLE_DEPRECATED_BEFORE=0x060000;NDEBUG;QT_NO_DEBUG;QT_QMLMODELS_LIB;QT_QMLINTEGRATION_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
-      <ProgramDataBaseFileName></ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -206,9 +207,9 @@
     <ClInclude Include="library\equationInterpreter.h" />
     <QtMoc Include="forms\errorForm.h" />
     <QtMoc Include="forms\familiarizationForm.h" />
-    <ClInclude Include="library\interpreter.h" />
     <QtMoc Include="forms\mainWindow.h" />
     <QtMoc Include="forms\parserForm.h" />
+    <ClInclude Include="library\MathCPP\src\interpreter.h" />
     <ClInclude Include="library\physicInterpreter.h" />
     <QtMoc Include="forms\physicalCalculateForm.h" />
     <QtMoc Include="forms\plottingForm.h" />

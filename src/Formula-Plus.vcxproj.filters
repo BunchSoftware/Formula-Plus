@@ -81,9 +81,6 @@
     <QtMoc Include="forms\familiarizationForm.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="library\interpreter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <QtMoc Include="forms\mainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -115,5 +112,10 @@
     <QtRcc Include="resource\qml.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="library\MathCPP\src\interpreter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

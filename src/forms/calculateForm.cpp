@@ -1,5 +1,5 @@
 #include "calculateForm.h"
-#include "library/interpreter.h"
+#include "library/MathCPP/src/interpreter.h"
 
 using namespace Interpreter;
 

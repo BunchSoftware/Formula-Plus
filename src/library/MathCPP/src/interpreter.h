@@ -67,12 +67,12 @@ namespace Interpreter
             new Node(L")", TypeNode::Operator, 0, nullptr),
             new Node(L"%", TypeNode::Operator, 5, MakeEvaluator(1, [=](Args a) { return a[0] / 100; })),
             new Node(L"!", TypeNode::Operator, 7, nullptr),
-            new Node(L"=", TypeNode::Operator, -1, MakeEvaluator(2, [=](Args a)
+            new Node(L"=", TypeNode::Operator, -2, MakeEvaluator(2, [=](Args a)
                    {
                         //throw std::logic_error("Ответ уравнения: Решений нет");
                         return a[1]/a[0];
                    })),
-            new Node(L"x", TypeNode::Variable, 0, MakeEvaluator(1, [=](Args a) { return a[0]; })),
+            new Node(L"x", TypeNode::Variable, -1, MakeEvaluator(1, [=](Args a) { return a[0]; })),
             new Node(L"^", TypeNode::Operator, 7, MakeEvaluator(2, [=](Args a) { return pow(a[0], a[1]); })),
             new Node(L"sin(", TypeNode::Function, 8, MakeEvaluator(1, [=](Args a) {return sin(a[0] / 180 * M_PI); })),
             new Node(L"cos(", TypeNode::Function, 8, MakeEvaluator(1, [=](Args a) { return cos(a[0] / 180 * M_PI); })),
@@ -272,7 +272,7 @@ namespace Interpreter
                 }
                 void Visit(Node node) override {
                     AddToResult(m_nextCanBeUnary ? TryConvertToUnary(node) : node);
-                    m_nextCanBeUnary = (node.operation != L")");
+                    m_nextCanBeUnary = (node.typeNode != TypeNode::Variable && node.operation != L")");
                 }
 
                 // Конвертирование в унарный оператор с проверкой
@@ -402,11 +402,220 @@ namespace Interpreter
                 bool isPopFunction = false;
                 Tokens m_stack;
             };
+        
+            class ShuntingGroupingMethod {
+            public:
+                Tokens Result(Tokens tokens) 
+                {
+                    for (int i = 0; i < tokens.size(); i++)
+                    {
+                        std::shared_ptr<const GenericToken<Node>> node{ std::dynamic_pointer_cast<const GenericToken<Node>>(tokens[i]) };
+                        if (node != nullptr && node->m_payload.operation == L"=")
+                        {
+                            isEquation = true;
+                            continue;
+                        }
+
+                        if (isEquation == false)
+                            stackToEqual.push_back(tokens[i]);
+                        else if(isEquation)
+                            stackAfterEqual.push_back(tokens[i]);
+                    }
+                    if (isEquation)
+                    {
+                        for (int i = 0; i < stackToEqual.size() - 1; i++)
+                        {
+                            std::shared_ptr<const GenericToken<Node>> node{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackToEqual[i]) };
+                            std::shared_ptr<const GenericToken<double>> number{ std::dynamic_pointer_cast<const GenericToken<double>>(stackToEqual[i]) };
+                            if (node != nullptr)
+                            {
+                                std::shared_ptr<const GenericToken<double>> numberNext{ std::dynamic_pointer_cast<const GenericToken<double>>(stackToEqual[i+1]) };
+                                if (numberNext != nullptr)
+                                {
+                                    if (stackToEqual.size() - i >= 3)
+                                    {
+                                        std::shared_ptr<const GenericToken<Node>> nodeAfterNext{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackToEqual[i + 2]) };
+                                        if (node->m_payload.operation == L"+" && nodeAfterNext != nullptr && nodeAfterNext->m_payload.typeNode != TypeNode::Variable)
+                                        {
+                                            stackAfterEqual.push_back(MakeToken(FindNode(L"-")));
+                                            stackAfterEqual.push_back(MakeToken(numberNext->m_payload));
+
+                                            stackToEqual.erase(stackToEqual.begin()+i);
+                                            stackToEqual.erase(stackToEqual.begin()+i);
+
+                                            i -= 1;
+                                        }
+                                        else if (node->m_payload.operation == L"-" && nodeAfterNext != nullptr && nodeAfterNext->m_payload.typeNode != TypeNode::Variable)
+                                        {
+                                            stackAfterEqual.push_back(MakeToken(FindNode(L"+")));
+                                            stackAfterEqual.push_back(MakeToken(numberNext->m_payload));
+
+                                            stackToEqual.erase(stackToEqual.begin() + i);
+                                            stackToEqual.erase(stackToEqual.begin() + i);
+
+                                            i -= 1;
+                                        }
+                                    }
+                                    else 
+                                    {
+                                        if (node->m_payload.operation == L"+")
+                                        {
+                                            stackAfterEqual.push_back(MakeToken(FindNode(L"-")));
+                                            stackAfterEqual.push_back(MakeToken(numberNext->m_payload));
+
+                                            stackToEqual.erase(stackToEqual.begin() + i);
+                                            stackToEqual.erase(stackToEqual.begin() + i);
+                                            i -= 1;
+                                        }
+                                        else if (node->m_payload.operation == L"-")
+                                        {
+                                            stackAfterEqual.push_back(MakeToken(FindNode(L"+")));
+                                            stackAfterEqual.push_back(MakeToken(numberNext->m_payload));
+
+                                            stackToEqual.erase(stackToEqual.begin() + i);
+                                            stackToEqual.erase(stackToEqual.begin() + i);
+
+                                            i -= 1;
+                                        }
+                                    }
+                                }
+                            }
+                            else if (number != nullptr)
+                            {
+                                std::shared_ptr<const GenericToken<Node>> nodeNext{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackToEqual[i + 1]) };
+                                if (nodeNext->m_payload.typeNode == TypeNode::Variable)
+                                    i++;
+                                else 
+                                {
+                                    if (nodeNext->m_payload.operation == L"+")
+                                    {
+                                        stackAfterEqual.push_back(MakeToken(FindNode(L"-")));
+                                        stackAfterEqual.push_back(MakeToken(number->m_payload));
+
+                                        stackToEqual.erase(stackToEqual.begin()+i);
+                                        stackToEqual.erase(stackToEqual.begin()+i);
+
+                                        i -= 1;
+                                    }
+                                    else if (nodeNext->m_payload.operation == L"-")
+                                    {
+                                        stackAfterEqual.push_back(MakeToken(FindNode(L"+")));
+                                        stackAfterEqual.push_back(MakeToken(number->m_payload));
+
+                                        stackToEqual.erase(stackToEqual.begin() + i);
+                                        stackToEqual.erase(stackToEqual.begin() + i);
+
+                                        i -= 1;
+                                    }
+                                }
+                            }
+                        }
+                        for (int i = 0; i < stackAfterEqual.size() - 1; i++)
+                        {
+                            std::shared_ptr<const GenericToken<Node>> node{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackAfterEqual[i]) };
+                            std::shared_ptr<const GenericToken<double>> number{ std::dynamic_pointer_cast<const GenericToken<double>>(stackAfterEqual[i]) };
+                            if (node != nullptr)
+                            {
+                                std::shared_ptr<const GenericToken<double>> numberNext{ std::dynamic_pointer_cast<const GenericToken<double>>(stackAfterEqual[i + 1]) };
+                                if (numberNext != nullptr)
+                                {
+                                    if (stackAfterEqual.size() - i >= 3)
+                                    {
+                                        std::shared_ptr<const GenericToken<Node>> nodeAfterNext{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackAfterEqual[i + 2]) };
+                                        if (node->m_payload.operation == L"+" && nodeAfterNext != nullptr && nodeAfterNext->m_payload.typeNode == TypeNode::Variable)
+                                        {
+                                            stackToEqual.push_back(MakeToken(FindNode(L"-")));
+                                            stackToEqual.push_back(MakeToken(numberNext->m_payload));
+                                            stackToEqual.push_back(MakeToken(nodeAfterNext->m_payload));
+
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + i);
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + i);
+
+                                            i -= 1;
+                                        }
+                                        else if (node->m_payload.operation == L"-" && nodeAfterNext != nullptr && nodeAfterNext->m_payload.typeNode == TypeNode::Variable)
+                                        {
+                                            stackToEqual.push_back(MakeToken(FindNode(L"+")));
+                                            stackToEqual.push_back(MakeToken(numberNext->m_payload));
+                                            stackToEqual.push_back(MakeToken(nodeAfterNext->m_payload));
+
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + i);
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + i);
+
+                                            i -= 1;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (node->m_payload.operation == L"+")
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + i);
+                                        else if (node->m_payload.operation == L"-")
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + i);
+                                    }
+                                }
+                            }
+                            else if (number != nullptr)
+                            {
+                                std::shared_ptr<const GenericToken<Node>> nodeNext{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackAfterEqual[i + 1]) };
+                                if (nodeNext->m_payload.typeNode == TypeNode::Variable)
+                                {
+                                    stackToEqual.push_back(MakeToken(FindNode(L"-")));
+                                    stackToEqual.push_back(MakeToken(number->m_payload));
+                                    stackToEqual.push_back(MakeToken(nodeNext->m_payload));
+
+                                    stackAfterEqual.erase(stackAfterEqual.begin() + i);
+                                    stackAfterEqual.erase(stackAfterEqual.begin() + i);
+
+                                    if (i > 0)
+                                    {
+                                        std::shared_ptr<const GenericToken<Node>> nodePrevios{ std::dynamic_pointer_cast<const GenericToken<Node>>(stackAfterEqual[i - 1]) };
+                                        if (nodePrevios != nullptr)
+                                        {
+                                            stackAfterEqual.erase(stackAfterEqual.begin() + (i - 1));
+                                            continue;
+                                        }
+                                    }         
+
+                                    if (stackAfterEqual.size() != i)
+                                        stackAfterEqual.erase(stackAfterEqual.begin() + i);
+
+                                    i -= 1;
+                                }
+                                else
+                                    i++;
+                            }
+                        }
+
+                        for (int i = 0; i < stackToEqual.size(); i++)
+                        {
+                            result.push_back(stackToEqual[i]);
+                        }
+
+                        result.push_back(MakeToken(FindNode(L"=")));
+
+                        for (int i = 0; i < stackAfterEqual.size(); i++)
+                        {
+                            result.push_back(stackAfterEqual[i]);
+                        }
+
+                        return result;
+                    }
+                    else
+                        return tokens;
+                }
+            private:
+                bool isEquation = false;
+                Tokens stackToEqual;
+                Tokens stackAfterEqual;
+                Tokens result;
+            };
         }
         // Преобразование набора токенов в набор токенов
-        inline Tokens Parse(const Tokens& tokens) {
+        inline Tokens Parse(Tokens tokens) {
+            Detail::ShuntingGroupingMethod gropingMethod;
             Detail::ShuntingYardParser parser;
-            parser.VisitAll(tokens.cbegin(), tokens.cend());
+            Tokens tokensGroup = gropingMethod.Result(tokens);
+            parser.VisitAll(tokensGroup.cbegin(), tokensGroup.cend());
             return parser.Result();
         }
     }

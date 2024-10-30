@@ -1,18 +1,8 @@
 ﻿   Qt/MSBuild: 3.3.0.13
    Qt: 6.7.0
-  aboutWindow.cpp
   calculateForm.cpp
-  errorForm.cpp
-  familiarizationForm.cpp
-  main.cpp
-  mainWindow.cpp
   parserForm.cpp
   physicalCalculateForm.cpp
-  plottingForm.cpp
-F:\Files\GitHub\Formula-Plus\src\forms\errorForm.cpp(3,31): warning C4100: parent: неиспользованный формальный параметр
-F:\Files\GitHub\Formula-Plus\src\forms\plottingForm.cpp(5,37): warning C4100: parent: неиспользованный формальный параметр
-F:\Files\GitHub\Formula-Plus\src\forms\aboutWindow.cpp(3,35): warning C4100: parent: неиспользованный формальный параметр
-F:\Files\GitHub\Formula-Plus\src\forms\familiarizationForm.cpp(3,51): warning C4100: parent: неиспользованный формальный параметр
 P:\Program\Visual Studio 2022\VC\Tools\MSVC\14.41.34120\include\format(42): warning STL4038: The contents of <format> are available only with C++20 or later.
 F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(13,9): warning C4005: M_PI: изменение макроопределения
   (компиляция исходного файла "forms/parserForm.cpp")
@@ -36,7 +26,6 @@ F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(14,9): warnin
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
       см. предыдущее определение "M_E"
   
-F:\Files\GitHub\Formula-Plus\src\forms\calculateForm.cpp(6,39): warning C4100: parent: неиспользованный формальный параметр
 P:\Program\Visual Studio 2022\VC\Tools\MSVC\14.41.34120\include\format(42): warning STL4038: The contents of <format> are available only with C++20 or later.
 F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(13,9): warning C4005: M_PI: изменение макроопределения
   (компиляция исходного файла "forms/physicalCalculateForm.cpp")
@@ -48,19 +37,9 @@ F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(14,9): warnin
       P:\Program\Qt\Qt 6.7.0\msvc2019_64\include\QtCore\qmath.h(189,9):
       см. предыдущее определение "M_E"
   
-F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(170,1): warning C4715: Interpreter::FindNode: значение возвращается не при всех путях выполнения
-F:\Files\GitHub\Formula-Plus\src\forms\mainWindow.cpp(7,33): warning C4100: parent: неиспользованный формальный параметр
-F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(118,1): warning C4715: Interpreter::Detail::ToString: значение возвращается не при всех путях выполнения
+F:\Files\GitHub\Formula-Plus\src\forms\calculateForm.cpp(6,39): warning C4100: parent: неиспользованный формальный параметр
 F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(170,1): warning C4715: Interpreter::FindNode: значение возвращается не при всех путях выполнения
 F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(118,1): warning C4715: Interpreter::Detail::ToString: значение возвращается не при всех путях выполнения
-  qrc_images.cpp
-  qrc_qml.cpp
-  moc_aboutWindow.cpp
-  moc_calculateForm.cpp
-  moc_errorForm.cpp
-  moc_familiarizationForm.cpp
-  moc_mainWindow.cpp
-  moc_parserForm.cpp
-  moc_physicalCalculateForm.cpp
-  moc_plottingForm.cpp
+F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(170,1): warning C4715: Interpreter::FindNode: значение возвращается не при всех путях выполнения
+F:\Files\GitHub\Formula-Plus\src\library\MathCPP\src\interpreter.h(118,1): warning C4715: Interpreter::Detail::ToString: значение возвращается не при всех путях выполнения
   Formula-Plus.vcxproj -> F:\Files\GitHub\Formula-Plus\src\debug\Formula-Plus.exe
